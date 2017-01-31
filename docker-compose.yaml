@@ -1,0 +1,29 @@
+version: '2'
+
+volumes:
+  mysql_db:
+
+
+services:
+    db:
+     image: mysql:5.7
+     volumes:
+       - mysql_db:/var/lib/mysql
+     restart: always
+     environment:
+       MYSQL_ROOT_PASSWORD: modx
+       MYSQL_DATABASE: modx
+       MYSQL_USER: modx
+       MYSQL_PASSWORD: modx
+
+
+    web:
+      image: webdevops/php-apache   
+      depends_on:
+        - db
+      restart: always
+      ports:
+        - "8111:80"
+      volumes:
+        - ./src:/app/        
+        - ./scripts:/scripts/

@@ -1,0 +1,42 @@
+<modx>
+    <database_type>mysql</database_type>
+    <database_server>db</database_server>
+    <database>modx</database>
+    <database_user>modx</database_user>
+    <database_password>modx</database_password>
+    <database_connection_charset>utf8</database_connection_charset>
+    <database_charset>utf8</database_charset>
+    <database_collation>utf8_general_ci</database_collation>
+    <table_prefix>modx_</table_prefix>
+    <https_port>443</https_port>
+    <http_host>localhost</http_host>
+    <cache_disabled>0</cache_disabled>
+
+    <inplace>1</inplace>
+
+    <unpacked>0</unpacked>
+
+    <language>ru</language>
+
+    <cmsadmin>petun</cmsadmin>
+    <cmspassword>12345678</cmspassword>
+    <cmsadminemail>petun911@gmail.com</cmsadminemail>
+
+    <context_mgr_path>$DIR/manager/</context_mgr_path>
+    <context_mgr_url>/manager/</context_mgr_url>
+
+    <context_connectors_path>$DIR/connectors/</context_connectors_path>
+    <context_connectors_url>/connectors/</context_connectors_url>
+
+    <context_web_path>$DIR/</context_web_path>
+    <context_web_url>/</context_web_url>
+
+    <assets_path>$DIR/assets/</assets_path>
+    <assets_url>/assets/</assets_url>
+
+    <core_path>$DIR/core/</core_path>
+    <processors_path>$DIR/core/model/modx/processors/</processors_path>
+
+    <remove_setup_directory>1</remove_setup_directory>
+
+</modx>
