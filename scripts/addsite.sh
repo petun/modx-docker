@@ -1,10 +1,17 @@
 #!/bin/bash
 
+
 DIR=/app
+
 
 ##############
 
 cd $DIR
+
+rm -rf *
+rm -rf .htaccess
+
+
 
 echo "Getting file from modx.com..."
 wget -O modx.zip http://modx.com/download/latest/
@@ -29,14 +36,16 @@ if [ -d "${ZDIR}" ]; then
         cd "setup"
         chmod +x index.php
         echo "Running setup..."
-        php index.php --installmode=new --config=config.xml
+        php index.php --installmode=new --config=/scripts/config.xml
                 
         cd ..
 
-        echo "Install packages"        
+        echo "Install packages"
+        cp /scripts/package.php /app/
         php package.php 
         
-        echo "Install structure"        
+        echo "Install structure"
+        cp /scripts/init_structure.php /app/
         php init_structure.php  
         
         #echo "Copy fix script"
@@ -52,10 +61,10 @@ fi
 mv ht.access .htaccess
 
 echo "Reset password for petun account"
-mysql -u modx -h db -p -e "USE \`modx\`; UPDATE modx_users SET hash_class = 'hashing.modMD5', password = MD5('12345678') WHERE username = 'petun';"
+mysql -u modx -h db -p modx -e "USE \`modx\`; UPDATE modx_users SET hash_class = 'hashing.modMD5', password = MD5('12345678') WHERE username = 'petun';"
 
 echo "configure friendly URLs and sessionClass"
-mysql -u modx -h db -p -e "USE \`modx\`; UPDATE \`modx_system_settings\` SET \`value\` = 1 WHERE \`key\` = 'automatic_alias'; UPDATE \`modx_system_settings\` SET \`value\` ='russian' WHERE  \`key\` = 'friendly_alias_translit'; UPDATE \`modx_system_settings\` SET \`value\` = 1 WHERE \`key\` = 'friendly_urls'; UPDATE \`modx_system_settings\` SET \`value\` = 1 WHERE \`key\` = 'use_alias_path'; UPDATE \`modx_system_settings\` SET \`value\` = '' WHERE \`key\` = 'session_handler_class';"
+mysql -u modx -h db -p modx -e "USE \`modx\`; UPDATE \`modx_system_settings\` SET \`value\` = 1 WHERE \`key\` = 'automatic_alias'; UPDATE \`modx_system_settings\` SET \`value\` ='russian' WHERE  \`key\` = 'friendly_alias_translit'; UPDATE \`modx_system_settings\` SET \`value\` = 1 WHERE \`key\` = 'friendly_urls'; UPDATE \`modx_system_settings\` SET \`value\` = 1 WHERE \`key\` = 'use_alias_path'; UPDATE \`modx_system_settings\` SET \`value\` = '' WHERE \`key\` = 'session_handler_class';"
 
 
 echo "Rewrite config.inc.php to unique file"

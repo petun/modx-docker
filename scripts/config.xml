@@ -22,21 +22,20 @@
     <cmspassword>12345678</cmspassword>
     <cmsadminemail>petun911@gmail.com</cmsadminemail>
 
-    <context_mgr_path>$DIR/manager/</context_mgr_path>
+    <context_mgr_path>/app/manager/</context_mgr_path>
     <context_mgr_url>/manager/</context_mgr_url>
 
-    <context_connectors_path>$DIR/connectors/</context_connectors_path>
+    <context_connectors_path>/app/connectors/</context_connectors_path>
     <context_connectors_url>/connectors/</context_connectors_url>
 
-    <context_web_path>$DIR/</context_web_path>
+    <context_web_path>/app/</context_web_path>
     <context_web_url>/</context_web_url>
 
-    <assets_path>$DIR/assets/</assets_path>
+    <assets_path>/app/assets/</assets_path>
     <assets_url>/assets/</assets_url>
 
-    <core_path>$DIR/core/</core_path>
-    <processors_path>$DIR/core/model/modx/processors/</processors_path>
+    <core_path>/app/core/</core_path>
+    <processors_path>/app/core/model/modx/processors/</processors_path>
 
     <remove_setup_directory>1</remove_setup_directory>
-
 </modx>
